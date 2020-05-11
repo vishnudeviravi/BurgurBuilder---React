@@ -109,7 +109,7 @@ t
             price : this.props.price
             
         }
-        this.props.onOrderBurger(order)
+        this.props.onOrderBurger(order,this.props.token)
         
 
         
@@ -186,13 +186,14 @@ const mapStateToProps = state => {
     return {
         ings: state.burgerBuilder.ingredients,
         price: state.burgerBuilder.totalPrice,
-        loading: state.burgerBuilder.loading
+        loading: state.burgerBuilder.loading,
+        token : state.auth.token
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        onOrderBurger : (orderData) => dispatch(purchaseBurger(orderData))
+        onOrderBurger : (orderData,token) => dispatch(purchaseBurger(orderData,token))
     }
 }
 
